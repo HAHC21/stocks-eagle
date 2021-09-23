@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+   {% if bought == "yes" %}
+   Bought!
+   <br/>
+   <br/>
+   {% endif %}
+   <table>
+        <tr>
+            <th class="historyhead">Symbol</td>
+            <th class="historyhead">Name</td>
+            <th class="historyhead">Shares</td>
+            <th class="historyhead">Price</td>
+            <th class="historyhead">TOTAL</td>
+        </tr>
+        {% for row in stocks %}
+        <tr style="background-color:#f2f2f2; border-bottom: 1px solid #d4d4d4;">
+            <td style="text-align:left; height:50px;text-indent:5%;">{{ row["stock"] }}</td>
+            <td style="text-align:left; height:50px;text-indent:5%;">{{ row["companyname"] }}</td>
+            <td style="text-align:left; height:50px;text-indent:5%;">{{ row["shares"] }}</td>
+            <td style="text-align:left; height:50px;text-indent:5%;">{{ row["price"] }}</td>
+            <td style="text-align:left; height:50px;text-indent:5%;">{{ row["total"] }}</td>
+        </tr>
+        {% endfor %}
+        <tr style="border-bottom: 1px solid #d4d4d4;">
+            <td style="text-align:left; height:50px;text-indent:5%;">CASH</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align:left;text-indent:5%;"><b>{{ cash }}</b></td>
+        </tr>
+    </table>
+    <style>
+        .historyhead {
+            width: 250px;
+            height:50px;
+            border-top: 1px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            font-weight:bold;
+            text-align:left;
+            text-indent:5%;
+        }
+    </style>
+{% endblock %}
